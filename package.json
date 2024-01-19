@@ -1,0 +1,15 @@
+{
+  "name": "testes-e2e-cypress-loja-ebac",
+  "version": "1.0.0",
+  "description": "Suíte de testes criada em site e-commerce.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.3"
+  }
+}

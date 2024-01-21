@@ -1,8 +1,22 @@
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('#username').type(usuario)
     cy.get('#password').type(senha, { log: false })
+    cy.get('.button').contains('Login').click()
+})
+
+Cypress.Commands.add("login_erro_usuario", (email, senha) => {
+    cy.get('#username').type(email)
+    cy.get('#password').type(senha)
+    cy.get('.button').contains('Login').click()
+
+})
+
+Cypress.Commands.add("login_erro_senha", (email, senha) => {
+    cy.get('#username').type(email)
+    cy.get('#password').type(senha)
     cy.get('.woocommerce-form > .button').click()
-});
+    cy.get('.woocommerce-error > li').should("contain", "Erro: a senha fornecida")
+})
 
 Cypress.Commands.add('addProdutos', (produto1, tamanho1, cor1, produto2, tamanho2, cor2, produto3, tamanho3, cor3, produto4, tamanho4, cor4) => {
     cy.get('#primary-menu > .menu-item-629 > a').click()
@@ -35,25 +49,4 @@ Cypress.Commands.add('addProdutos', (produto1, tamanho1, cor1, produto2, tamanho
     cy.get('.woocommerce-message > .button').click()
     cy.get('.checkout-button').click()
 
-})
-
-Cypress.Commands.add("login_sucesso", (email, password) => {
-    cy.get('#username').type(email)
-    cy.get('#password').type(password)
-    cy.get('.woocommerce-form > .button').click()
-    
-})
-
-Cypress.Commands.add("login_erro_usuario", (email, password) => {
-    cy.get('#username').type(email)
-    cy.get('#password').type(password)
-    cy.get('.woocommerce-form > .button').click()
-
-})
-
-Cypress.Commands.add("login_erro_senha", (email, password) => {
-    cy.get('#username').type(email)
-    cy.get('#password').type(password)
-    cy.get('.woocommerce-form > .button').click()
-    cy.get('.woocommerce-error > li').should("contain", "Erro: a senha fornecida")
 })

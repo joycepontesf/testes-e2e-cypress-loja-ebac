@@ -1,5 +1,3 @@
-/// <reference types="Cypress" />
-
 describe('Fluxo de Login', () => {
 
     beforeEach(() => {
@@ -8,7 +6,9 @@ describe('Fluxo de Login', () => {
 
     it('Deve fazer login bem sucedido', () => {
 
-        cy.login_sucesso('aluno_ebac@teste.com', 'teste@teste.com')
+        cy.fixture('usuario').then((dados) => {
+            cy.login(dados.usuario, dados.senha)
+        })
         cy.get('.woocommerce-MyAccount-content').should("contain", "Olá, aluno_ebac")
     })
 

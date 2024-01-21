@@ -1,7 +1,3 @@
-/// <reference types="Cypress" />
-
-//todos passam
-
 describe('Funcionalidade de Carrinho de Compra', () => {
 
     beforeEach(() => {
